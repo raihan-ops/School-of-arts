@@ -1,0 +1,9 @@
+.my-custom-link{
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    margin-left: 10px;
+}
+.custom-header{
+    text-align: right  
+}
