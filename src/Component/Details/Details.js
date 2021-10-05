@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { useParams } from 'react-router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faClock } from '@fortawesome/free-regular-svg-icons'
+import { faDollarSign } from '@fortawesome/free-solid-svg-icons'
+import Rating from 'react-rating'
+import './Details.css'
+
+
 
 
 const Details = () => {
@@ -39,6 +46,8 @@ const Details = () => {
             image: 'https://images.unsplash.com/photo-1513031300226-c8fb12de9ade?ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cGhvdG9ncmFwaGVyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80',
             fees: 500,
             timeDuration: '4 WEEk',
+            review: 3,
+
 
 
         },
@@ -49,6 +58,7 @@ const Details = () => {
             image: 'https://internationaljournalofresearch.files.wordpress.com/2020/06/img_20200608_004940-2.jpg?w=720',
             fees: 300,
             timeDuration: '7 WEEk',
+            review: 4,
         },
         {
             id: 3,
@@ -57,6 +67,7 @@ const Details = () => {
             image: 'https://sothebys-com.brightspotcdn.com/dims4/default/b147f72/2147483647/strip/true/crop/2000x1131+0+0/resize/1156x654!/quality/90/?url=http%3A%2F%2Fsothebys-brightspot-migration.s3.amazonaws.com%2Fcd%2Fc9%2F69%2F5889a568f09402e2be0d0d48c7ebe53f8fcb6a0e8d7ba1710f20591aa5%2F390l18231-9vccg-combined.jpg',
             fees: 450,
             timeDuration: '3 WEEk',
+            review: 3,
         },
         {
             id: 4,
@@ -65,6 +76,7 @@ const Details = () => {
             image: 'https://i.ytimg.com/vi/hfjrYiZqsNo/maxresdefault.jpg',
             fees: 600,
             timeDuration: '6 WEEk',
+            review: 5,
         },
         {
             id: 5,
@@ -73,6 +85,7 @@ const Details = () => {
             image: 'https://i1.wp.com/textilelearner.net/wp-content/uploads/2017/10/Fashion-Design-Tools-min.jpg?fit=612%2C408&quality=95&strip=all&ssl=1',
             fees: 840,
             timeDuration: '8 WEEk',
+            review: 4,
         },
         {
             id: 6,
@@ -81,6 +94,7 @@ const Details = () => {
             image: 'https://contentwriters.com/blog/wp-content/uploads/content-writer-750x500.jpg',
             fees: 320,
             timeDuration: '5 WEEk',
+            review: 3,
         },
         {
             id: 7,
@@ -89,6 +103,7 @@ const Details = () => {
             image: 'https://www.cnet.com/a/img/lbxQPa_5eIyLRgU7qYBr_Y3ylmA=/940x528/2020/06/04/5bfde48b-421b-4f8a-9a7c-d2a05ba42c90/ultimate-drawing-4.jpg',
             fees: 460,
             timeDuration: '8 WEEk',
+            review: 4,
         },
         {
             id: 8,
@@ -97,6 +112,7 @@ const Details = () => {
             image: 'https://www.cartooningforpeace.org/wp-content/uploads/2020/06/May-14-20-Press-Freedom-and-Corona-Virus.jpg',
             fees: 584,
             timeDuration: '3 WEEk',
+            review: 5,
         },
         {
             id: 9,
@@ -105,6 +121,7 @@ const Details = () => {
             image: 'https://image.freepik.com/free-photo/dance-time-stylish-men-woman-dancing-hip-hop-bright-clothes-green-background-dance-hall-neon-light_155003-16406.jpg',
             fees: 790,
             timeDuration: '9 WEEk',
+            review: 4,
         },
         {
             id: 10,
@@ -113,13 +130,14 @@ const Details = () => {
             image: 'https://images.unsplash.com/photo-1540312479395-6b36e14a5961?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80',
             fees: 630,
             timeDuration: '7 WEEk',
+            review: 3,
         },
 
     ]
 
 
     let found = Data.find(element => element.id === itemIdInt);
-    const{ name,image,details,fees,timeDuration}=found
+    const { name, image, details, fees, timeDuration, review } = found
     return (
         <div className="container mb-5 mt-5">
             <Card className="mx-auto mb-5 p-2" style={{ width: '30rem' }}>
@@ -130,11 +148,22 @@ const Details = () => {
                         {details}
                     </Card.Text>
                     <Card.Text>
-                       Fees: $ {fees}
+                        Fees:{fees}<FontAwesomeIcon className="me-1 ms-1" icon={faDollarSign} />
                     </Card.Text>
-                    <Card.Text>
-                      Time Duration: {timeDuration}
+                    <Card.Text >
+                        Time Duration : <span ><FontAwesomeIcon className="text-info me-1 " icon={faClock} /></span>
+                        {timeDuration}
                     </Card.Text>
+                   <Card.Text >
+                   Rating :
+                    <Rating
+                        initialRating={review}
+                        readonly
+                        emptySymbol="far fa-star cheaked"
+                        fullSymbol="fas fa-star cheaked"
+                        className="ms-1 me-1"
+                    /> ({review}/5)
+                   </Card.Text>
                 </Card.Body>
             </Card>
         </div>

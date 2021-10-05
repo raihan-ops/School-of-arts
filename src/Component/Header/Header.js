@@ -2,13 +2,16 @@ import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import './Header.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {} from '@fortawesome/free-regular-svg-icons'
+import {faSchool} from '@fortawesome/free-solid-svg-icons'
 
 const Header = () => {
     return (
-        <div>
+        <div className="header">
             <Navbar bg="dark" variant="dark">
-                <Container>
-                    <Navbar.Brand >School of Arts</Navbar.Brand>
+            <Container>
+                    <Navbar.Brand ><FontAwesomeIcon  className="ms-1 me-1" icon={faSchool}/> School of Arts</Navbar.Brand>
                     <Nav className="">
 
 
