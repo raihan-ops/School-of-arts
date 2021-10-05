@@ -13,7 +13,7 @@ const Services = () => {
             <div className="mx-auto mb-5 container mt-5">
                 <Row xs={1} md={2} lg={3} className="g-4 ">
                     {
-                        data.map(dat => <ServiceCard data={dat}>
+                        data.map(dat => <ServiceCard key={dat.id} data={dat}>
 
                         </ServiceCard>)
                     }

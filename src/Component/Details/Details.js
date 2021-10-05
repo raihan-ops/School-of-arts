@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Card } from 'react-bootstrap';
+
+import { Card } from 'react-bootstrap';
 import { useParams } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock } from '@fortawesome/free-regular-svg-icons'
 import { faDollarSign } from '@fortawesome/free-solid-svg-icons'
 import Rating from 'react-rating'
 import './Details.css'
+
 
 
 
@@ -37,7 +38,6 @@ const Details = () => {
     // }, [])
 
     // object cant read properly got error and thats why i try fix bellow way.....
-
     const Data = [
         {
             id: 1,
@@ -136,34 +136,35 @@ const Details = () => {
     ]
 
 
+
     let found = Data.find(element => element.id === itemIdInt);
-    const { name, image, details, fees, timeDuration, review } = found
+    const { name, image, details, fees, timeDuration, review } = found;
     return (
         <div className="container mb-5 mt-5">
             <Card className="mx-auto mb-5 p-2" style={{ width: '30rem' }}>
                 <Card.Img variant="top" src={image} />
                 <Card.Body className="mb-5">
                     <Card.Title>{name}</Card.Title>
-                    <Card.Text>
+                    <Card.Text className="text-secondary">
                         {details}
                     </Card.Text>
                     <Card.Text>
-                        Fees:{fees}<FontAwesomeIcon className="me-1 ms-1" icon={faDollarSign} />
+                        <span className="fw-bold">Fees</span> :{fees}<FontAwesomeIcon className="me-1 ms-1" icon={faDollarSign} />
                     </Card.Text>
                     <Card.Text >
-                        Time Duration : <span ><FontAwesomeIcon className="text-info me-1 " icon={faClock} /></span>
+                        <span className="fw-bold">Time Duration </span> : <span ><FontAwesomeIcon className="text-info me-1 " icon={faClock} /></span>
                         {timeDuration}
                     </Card.Text>
-                   <Card.Text >
-                   Rating :
-                    <Rating
-                        initialRating={review}
-                        readonly
-                        emptySymbol="far fa-star cheaked"
-                        fullSymbol="fas fa-star cheaked"
-                        className="ms-1 me-1"
-                    /> ({review}/5)
-                   </Card.Text>
+                    <Card.Text >
+                        <span className="fw-bold">Rating</span>  :
+                        <Rating
+                            initialRating={review}
+                            readonly
+                            emptySymbol="far fa-star cheaked"
+                            fullSymbol="fas fa-star cheaked"
+                            className="ms-1 me-1"
+                        /> ({review}/5)
+                    </Card.Text>
                 </Card.Body>
             </Card>
         </div>

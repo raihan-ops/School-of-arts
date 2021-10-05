@@ -4,17 +4,34 @@ import { Link } from 'react-router-dom';
 import Item from '../Item/Item';
 import useData from '../../Hook/useData';
 import img from '../../Image/home.jpg';
+import { useSpring, animated } from 'react-spring'
 
 
 const Home = () => {
-    const [data, setData] = useData();
+    // For react animation
+    const [flip, set] = useState(false)
+    const props = useSpring({
+        to: { opacity: 1},
+        from: { opacity: 0 },
+        reset: true,
+        reverse: flip,
+        delay: 200,
+        
 
+        onRest: () => set(!flip),
+    })
+
+    // for fetch data from hook
+    const [data, setData] = useData();
     const newdata = data.slice(0, 4);
     return (
         <div className="">
             <div className="mb-5 mt-5 d-lg-flex d-md-flex container justify-content-md-between justify-content-lg-between " >
                 <div className="mt-auto mb-auto p-5">
-                    <h1 className="">Wellcome to School of Arts</h1>
+                    <animated.div style={props}>
+                        <h1 className="">Wellcome to School of Arts</h1>
+                    </animated.div>
+
                     <p><small>As a leader in contemporary art education, we believe that everyone possesses a unique seed of creativity that should be valued and nurtured. That’s why we are dedicated to innovation, inspiration, and excellence in all our programs. We are a team of professional artists and educators in Toronto, Canada working to provide accessible, dynamic art programs for toddlers, children, teens, and adults
                     </small></p>
                     <Button className="text-white fw-bold" variant="primary">Get Started</Button>
